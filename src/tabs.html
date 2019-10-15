@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #tabs {
+            display: flex;
+            position: relative;
+            width: 400px;
+        }
+
+        .tab-title {
+            padding: 2px 20px;
+            color: white;
+            background-color: rgb(241, 212, 175);
+            cursor: pointer;
+        }
+
+        .tab-title:hover {
+            background-color: rgb(212, 176, 129);
+        }
+
+        .tab-content {
+            display: none;
+            border: 4px solid burlywood;
+            color: rgb(54, 54, 54);
+        }
+
+        .tab-active .tab-title {
+            background-color: burlywood;
+            cursor: default;
+        }
+
+        .tab-active .tab-content {
+            display: block;
+            position: absolute;
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tabs">
+        <div class="tab tab-active">
+            <div class="tab-title">TAB-A</div>
+            <div class="tab-content">
+                <p>I am in tab A. I am in tab A. I am in tab A. I am in tab A. I am in tab A. I am in tab A. I am in tab
+                    A.I
+                    am in tab A. I am in tab A. I am in tab A. I am in tab A. I am in tab A. I am in tab A. I am in tab
+                    A.I am
+                    in tab A. I am in tab A. I am in tab A. I am in tab A. I am in tab A. I am in tab A. I am in tab A.
+                </p>
+            </div>
+        </div>
+        <div class="tab">
+            <div class="tab-title">TAB-B</div>
+            <div class="tab-content">
+                <p>I am in tab B. I am in tab B. I am in tab B. I am in tab B. I am in tab B. I am in tab B. I am in tab
+                    B.I
+                    am in tab B. I am in tab B. I am in tab B. I am in tab B. I am in tab B. I am in tab B. I am in tab
+                    B.I am
+                    in tab B. I am in tab B. I am in tab B. I am in tab B. I am in tab B. I am in tab B. I am in tab B.
+                </p>
+            </div>
+        </div>
+        <div class="tab">
+            <div class="tab-title">TAB-C</div>
+            <div class="tab-content">
+                <p>I am in tab C. I am in tab C. I am in tab C. I am in tab C. I am in tab C. I am in tab C. I am in tab
+                    C.I
+                    am in tab C. I am in tab C. I am in tab C. I am in tab C. I am in tab C. I am in tab C. I am in tab
+                    C.I am
+                    in tab C. I am in tab C. I am in tab C. I am in tab C. I am in tab C. I am in tab C. I am in tab C.
+                </p>
+            </div>
+        </div>
+        <div class="tab">
+            <div class="tab-title">TAB-D</div>
+            <div class="tab-content">
+                <p>I am in tab D. I am in tab D. I am in tab D. I am in tab D. I am in tab D. I am in tab D. I am in tab
+                    D.I
+                    am in tab D. I am in tab D. I am in tab D. I am in tab D. I am in tab D. I am in tab D. I am in tab
+                    D.I am
+                    in tab D. I am in tab D. I am in tab D. I am in tab D. I am in tab D. I am in tab D. I am in tab D.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    document.getElementById('tabs').onclick = function (event) {
+        if (event.target.className.includes('tab-title')) {
+            var a = document.getElementsByClassName('tab-active')[0]
+            a.className = a.className.replace(/\s*\btab-active\b\s*/, ' ');
+            event.path[1].className += ' tab-active';
+        }
+    }
+</script>
+
+</html>
