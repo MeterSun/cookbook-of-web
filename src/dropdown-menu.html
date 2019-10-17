@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉菜单</title>
+    <style>
+        .dropdown-menu {
+            background-color: rgb(236, 233, 227);
+            cursor: default;
+        }
+
+        .dropdown-menu .menu {
+            display: inline-block;
+            position: relative;
+        }
+
+        .dropdown-menu .menu:hover {
+            background-color: rgb(36, 36, 36);
+            color: white;
+        }
+
+        .dropdown-menu .menu-title {
+            padding: 10px 20px;
+        }
+
+        .dropdown-menu .menu-items {
+            display: none;
+            position: absolute;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu .menu:hover .menu-items {
+            display: block;
+            background-color: rgb(105, 105, 105);
+            color: white;
+        }
+
+        .dropdown-menu ul {
+            margin: 0px;
+            list-style: none;
+            padding: 0px;
+        }
+
+        .dropdown-menu li {
+            padding: 2px 15px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu li:hover {
+            background-color: rgb(163, 163, 163);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="menu1" class="dropdown-menu">
+        <div class="menu">
+            <div class="menu-title">图片</div>
+            <div class="menu-items">
+                <ul>
+                    <li>选项一</li>
+                    <li>选项二</li>
+                    <li>选项三</li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-title">视频</div>
+            <div class="menu-items">
+                <ul>
+                    <li>选项一</li>
+                    <li>选项二</li>
+                    <li>选项三</li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-title">音乐</div>
+            <div class="menu-items">
+                <ul>
+                    <li>选项一</li>
+                    <li>选项二</li>
+                    <li>选项三</li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="menu-title">电影</div>
+            <div class="menu-items">
+                <ul>
+                    <li>选项一</li>
+                    <li>选项二</li>
+                    <li>选项三</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    document.getElementById('menu1').onclick = function (event) {
+        var title;
+        for (const element of event.path) {
+            if (element.className === 'menu') {
+                title = element.firstElementChild.innerText;
+                break;
+            }
+        }
+        if (title) {
+            alert(`选中了 [${title}${event.target.tagName == 'LI' ? ' - ' + event.target.innerText : ''}]`)
+        }
+    }
+</script>
+
+</html>
