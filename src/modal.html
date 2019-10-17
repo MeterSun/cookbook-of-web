@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模态框</title>
+    <style>
+        .modal-wrapper {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(156, 156, 156, 0.308);
+        }
+
+        .modal {
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+            width: 80%;
+            margin: 10% auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 rgb(145, 145, 145);
+            background-color: white;
+        }
+
+
+        .modal-active {
+            display: block;
+        }
+
+        .modal-closed {
+            display: none;
+        }
+
+        .modal .title {
+            padding: 10px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .modal .content {
+            flex-grow: 1;
+            padding: 10px;
+        }
+
+        .modal .foot {
+            padding: 10px;
+            text-align: center;
+            border-top: 2px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn-modal-1">打开模态框</button>
+    <div id="modal-1" class="modal-wrapper modal-closed">
+        <div class="modal">
+            <div class="title">模态框标题</div>
+            <div class="content">
+                <p>这里是模态框。这里是模态框。这里是模态框。</p>
+                <p>这里是模态框。这里是模态框。这里是模态框。</p>
+                <p>这里是模态框。这里是模态框。这里是模态框。</p>
+            </div>
+            <div class="foot">
+                <button value="ok">确定</button>
+                <button value="cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById('btn-modal-1').onclick = function (event) {
+        var modal = document.getElementById('modal-1')
+        modal.className = modal.className.split(/\s+/).filter(c => c !== 'modal-closed').concat('modal-active').join(' ')
+    }
+    document.getElementById('modal-1').onclick = function (event) {
+        var modal;
+        for (const element of event.path) {
+            if (element.className.split(/\s+/).filter(c => c == 'modal-wrapper').length) {
+                modal = element;
+                break;
+            }
+        }
+        if (modal) {
+            closeModal = () => modal.className = modal.className.split(/\s+/).filter(c => c !== 'modal-active').concat('modal-closed').join(' ');
+            if (event.target.value == 'ok') {
+                closeModal();
+                console.log('click ok')
+            } else if (event.target.value == 'cancel') {
+                closeModal();
+                console.log('click cancel')
+            }
+        }
+    }
+</script>
+
+</html>
