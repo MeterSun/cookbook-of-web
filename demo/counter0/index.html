@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计数器</title>
+    <style>
+        section {
+            border: 5px solid #6aa9f1;
+            padding: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h3>基本</h3> -->
+    <section>
+        <div id="counter"></div>
+        <button id="btn-reset">RESET</button>
+        <button id="btn-add">+</button>
+        <button id="btn-sub">-</button>
+        <script>
+            var counter = 0;
+            function setCounter(n) {
+                document.getElementById('counter').innerText = n;
+            }
+            setCounter(counter);
+            document.getElementById('btn-reset').onclick = function () {
+                setCounter(counter = 0);
+            }
+            document.getElementById('btn-add').onclick = function () {
+                setCounter(++counter);
+            }
+            document.getElementById('btn-sub').onclick = function () {
+                setCounter(--counter);
+            }
+        </script>
+    </section>
+    <!-- <h3>基于getter/setter数据驱动</h3> -->
+    <section>
+        <div id="counter2"></div>
+        <button onclick="state.reset()">RESET</button>
+        <button onclick="state.add()">+</button>
+        <button onclick="state.sub()">-</button>
+        <script>
+            function setCounter2(n) {
+                document.getElementById('counter2').innerText = n;
+            }
+            var state = {
+                __counter: 0,
+                get counter() {
+                    return this.__counter;
+                },
+                set counter(n) {
+                    this.__counter = n;
+                    setCounter2(n);
+                },
+                add() {
+                    this.counter++;
+                },
+                sub() {
+                    this.counter--;
+                },
+                reset() {
+                    this.counter = 0;
+                },
+            }
+            state.reset();
+        </script>
+    </section>
+</body>
+
+</html>
