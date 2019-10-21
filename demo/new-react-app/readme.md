@@ -110,3 +110,20 @@
     npm start # 启动
     npm run build # 构建
     ```
+1. 支持 class 中使用=定义属性、方法
+    ```
+    npm install babel-plugin-transform-class-properties --save-dev
+    ```
+    同时在文件 .babelrc 中增加
+    ```json
+      {
+        "plugins": ["transform-class-properties"]
+      }
+    ```
+
+> 注意：js 中 import 允许不加后缀名，需在 webpack.config.js 中添加
+```
+resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+}
+```
